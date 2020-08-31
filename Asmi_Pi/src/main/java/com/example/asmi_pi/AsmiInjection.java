@@ -1,31 +1,29 @@
 package com.example.asmi_pi;
 
-import android.content.Context;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.github.nkzawa.socketio.client.IO;
+import com.github.nkzawa.socketio.client.Socket;
 
-import com.chaquo.python.PyObject;
-import com.chaquo.python.Python;
-import com.chaquo.python.android.AndroidPlatform;
+import java.net.URISyntaxException;
 
 public class AsmiInjection {
 
-
-
     private static final String TAG = "%%%%i am in Library---";
 
-    public void d(String message) {
-
-        if (! Python.isStarted()) {
-            Python.start(Python.getPlatform());
-        }
+    private Socket mSocket;
 
 
-        Python py = Python.getInstance();
-        PyObject pyObj = py.getModule("script");
-        PyObject obj = pyObj.callAttr("showMessage",message.toString());
-        Log.d(TAG, obj.toString());
+    public void d(String videoLink) {
+
+        try {
+            mSocket = IO.socket("http://13.233.142.241:8080/get");
+            mSocket.connect();
+            Log.d(TAG,"Socketttttttttttt connected");
+
+            mSocket.emit("stream", "https://video.kumuapi.com/7e281f6fc840acb18cbee58e17f5372c_C5E4524D4BE099BD18736E1A95F625FA.m3u8");
+//            mSocket.on("reply", );
+        } catch (URISyntaxException e) {}
     }
 
 }

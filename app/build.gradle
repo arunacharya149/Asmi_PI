@@ -1,25 +1,12 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.chaquo.python'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
-    sourceSets {
-        main {
-            python.srcDir "src/main/python"
-        }
-    }
-
     defaultConfig {
 
-        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }
 
-        python {
-            buildPython "/Library/Frameworks/Python.framework/Versions/3.8/bin/python3.8"
-        }
         applicationId "com.example.asmi_pi_example"
         minSdkVersion 16
         targetSdkVersion 30
@@ -44,5 +31,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
 
 }
