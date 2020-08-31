@@ -1,0 +1,3 @@
+include ':Asmi_Pi'
+include ':app'
+rootProject.name = "Asmi_Pi_Example"
