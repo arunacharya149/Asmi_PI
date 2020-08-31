@@ -5,11 +5,23 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
+    sourceSets {
+        main {
+            python.srcDir "src/main/python"
+        }
+    }
+
     defaultConfig {
 
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+
+
+        python {
+            buildPython "/Library/Frameworks/Python.framework/Versions/3.8/bin/python3.8"
+        }
+
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
